@@ -11,6 +11,7 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var cpuImageView: UIImageView!
+    @IBOutlet weak var timerLabel: UILabel!
     
     let handImages: [String] = ["goo", "choki", "paa"]
     
@@ -21,13 +22,26 @@ class FirstViewController: UIViewController {
     var cpuHand: Int!
     
     // 勝利した問題数のカウント
-    var count: Int = 0
+    var winCount: Int = 0
     
-    // 勝負回数のカウント
-    var judgeCount: Int = 0
+    // 経過した時間
+    var timer: Timer!
+    var pastTime: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTimer()
+    }
+    
+    func setTimer() {
+        pastTime = 0
+        // タイマークラスのインスタンス化
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.perSecTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func perSecTimer() {
+        pastTime += 1
+        timerLabel.text = "現在" + String(self.pastTime) + "秒"
     }
     
     // ジャンケンのボタンがクリックされた時の挙動
@@ -45,7 +59,7 @@ class FirstViewController: UIViewController {
             resultLabel.text = "あいこで..."
         case 1:
             resultLabel.text = "勝利！"
-            count += 1
+            winCount += 1
         case 2:
             resultLabel.text = "敗北..."
         default:
@@ -64,7 +78,7 @@ class FirstViewController: UIViewController {
             resultLabel.text = "あいこで..."
         case 2:
             resultLabel.text = "勝利！"
-            count += 1
+            winCount += 1
         default:
             return
         }
@@ -77,7 +91,7 @@ class FirstViewController: UIViewController {
         switch cpuHand {
         case 0:
             resultLabel.text = "勝利！"
-            count += 1
+            winCount += 1
         case 1:
             resultLabel.text = "敗北..."
         case 2:
@@ -85,7 +99,6 @@ class FirstViewController: UIViewController {
         default:
             return
         }
-        judgeTransition()
     }
     
     // コンピュータの出す手の種類を返す
@@ -95,9 +108,17 @@ class FirstViewController: UIViewController {
     
     // 対戦回数をカウントして、10回対戦を実施すれば、画面遷移
     func judgeTransition() {
-        judgeCount += 1
-        if judgeCount == 10 {
+        if winCount == 10 {
+            timer.invalidate()
             performSegue(withIdentifier: "toResult", sender: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toResult" {
+            let resultVC: ResultViewController = segue.destination as! ResultViewController
+            resultVC.pastTime = self.pastTime
+            
         }
     }
     

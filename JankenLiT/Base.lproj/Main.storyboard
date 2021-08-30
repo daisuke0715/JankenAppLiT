@@ -67,24 +67,35 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在0秒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nH-7J-Yrh">
+                                <rect key="frame" x="107" y="85" width="200" height="31.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="94i-j8-1ig"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Gjt-U2-YT4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="7:8" id="2Rz-ey-Tlz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ear-pa-Mni" secondAttribute="trailing" constant="30" id="C7P-HH-1qB"/>
-                            <constraint firstItem="ear-pa-Mni" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hff-2g-3d0"/>
-                            <constraint firstItem="ear-pa-Mni" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="bFZ-QV-mZ3"/>
+                            <constraint firstItem="ear-pa-Mni" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="8Js-22-QuF"/>
+                            <constraint firstItem="ear-pa-Mni" firstAttribute="top" secondItem="3nH-7J-Yrh" secondAttribute="bottom" constant="47.5" id="8Mu-qb-v1e"/>
+                            <constraint firstItem="3nH-7J-Yrh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="41" id="Euf-3e-pRF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ear-pa-Mni" secondAttribute="trailing" constant="30" id="WNQ-HV-cY6"/>
                             <constraint firstItem="DdT-H3-GeW" firstAttribute="top" secondItem="Gjt-U2-YT4" secondAttribute="bottom" constant="120" id="fLl-zi-JtO"/>
+                            <constraint firstItem="3nH-7J-Yrh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gyA-da-mTf"/>
                             <constraint firstItem="DdT-H3-GeW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hKY-az-VdV"/>
                             <constraint firstItem="Gjt-U2-YT4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mYK-PP-n4s"/>
-                            <constraint firstItem="ear-pa-Mni" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="sq4-b0-pgI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="lps-H4-qbd"/>
                     <connections>
                         <outlet property="cpuImageView" destination="Gjt-U2-YT4" id="Hzh-Qx-Bmg"/>
                         <outlet property="resultLabel" destination="ear-pa-Mni" id="KWE-HO-Dng"/>
+                        <outlet property="timerLabel" destination="3nH-7J-Yrh" id="MXu-Ym-CGk"/>
                         <segue destination="phj-iJ-FeJ" kind="presentation" identifier="toResult" modalPresentationStyle="fullScreen" id="SGs-gE-4t6"/>
                     </connections>
                 </viewController>
@@ -95,7 +106,7 @@
         <!--Result View Controller-->
         <scene sceneID="P5Z-j6-TIi">
             <objects>
-                <viewController id="phj-iJ-FeJ" customClass="ResultViewController" customModule="JankenLiT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultVC" id="phj-iJ-FeJ" customClass="ResultViewController" customModule="JankenLiT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ejW-Kk-2Ar">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,13 +132,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="０" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GsL-gD-dNo">
-                                <rect key="frame" x="182" y="286" width="51" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcs-cJ-XPx">
                                 <rect key="frame" x="82" y="642" width="250" height="70"/>
                                 <color key="backgroundColor" red="0.047058823530000002" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,6 +147,13 @@
                                     <action selector="back:" destination="phj-iJ-FeJ" eventType="touchUpInside" id="pyL-B7-RYz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="０" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GsL-gD-dNo">
+                                <rect key="frame" x="157" y="286" width="100" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wwn-JL-akB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -151,6 +162,9 @@
                             <constraint firstItem="wwn-JL-akB" firstAttribute="bottom" secondItem="Zcs-cJ-XPx" secondAttribute="bottom" constant="150" id="Nit-0S-8dd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pastTimeLabel" destination="GsL-gD-dNo" id="b8Z-Po-6tZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBs-2o-i90" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -415,7 +429,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="rPV-ur-rtQ" kind="relationship" relationship="viewControllers" id="Eb3-X9-t32"/>
-                        <segue destination="7Tk-EE-ijq" kind="relationship" relationship="viewControllers" id="Tsn-Mg-CDN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRo-A2-bxo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
