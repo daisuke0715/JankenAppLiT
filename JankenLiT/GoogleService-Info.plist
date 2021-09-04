@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1012939621115-auf0j1pj5ajoea4jpsucojjqqdg8feo7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1012939621115-auf0j1pj5ajoea4jpsucojjqqdg8feo7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA4ozHxjVb6npDkMfjucjuBl6SWB9-1h_k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1012939621115</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.daisukekawamura.JankenLiT</string>
+	<key>PROJECT_ID</key>
+	<string>jankenapp-ec5fa</string>
+	<key>STORAGE_BUCKET</key>
+	<string>jankenapp-ec5fa.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1012939621115:ios:3794e74357e1f264c1665e</string>
+</dict>
+</plist>
